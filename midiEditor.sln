@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "midiEditor", "midiEditor\midiEditor.pyproj", "{DB83F8ED-E3B2-4A11-BDEC-73F8E8306982}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB83F8ED-E3B2-4A11-BDEC-73F8E8306982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB83F8ED-E3B2-4A11-BDEC-73F8E8306982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B06C806-037F-4195-AD5D-1AEC1CE62A90}
+	EndGlobalSection
+EndGlobal
