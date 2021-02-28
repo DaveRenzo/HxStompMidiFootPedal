@@ -96,35 +96,13 @@ void setup()
   MIDI.begin(MIDI_CHANNEL_OMNI);
   
   pinMode(SW_0, INPUT_PULLUP);
-  swithces[0].ccNumber = EEPROM.read(0);
-  swithces[0].ccValue = EEPROM.read(6);
-  swithces[0].midiChannel = EEPROM.read(12);
-
   pinMode(SW_1, INPUT_PULLUP);
-  swithces[1].ccNumber = EEPROM.read(1);
-  swithces[1].ccValue = EEPROM.read(7);
-  swithces[1].midiChannel = EEPROM.read(13);
-  
   pinMode(SW_2, INPUT_PULLUP);
-  swithces[2].ccNumber = EEPROM.read(2);
-  swithces[2].ccValue = EEPROM.read(8);
-  swithces[2].midiChannel = EEPROM.read(14);
-  
   pinMode(SW_3, INPUT_PULLUP);
-  swithces[3].ccNumber = EEPROM.read(3);
-  swithces[3].ccValue = EEPROM.read(9);
-  swithces[3].midiChannel = EEPROM.read(15);
-
   pinMode(SW_4, INPUT_PULLUP);
-  swithces[4].ccNumber = EEPROM.read(4);
-  swithces[4].ccValue = EEPROM.read(10);
-  swithces[4].midiChannel = EEPROM.read(16);
-
   pinMode(SW_5, INPUT_PULLUP);
-  swithces[5].ccNumber = EEPROM.read(5);
-  swithces[5].ccValue = EEPROM.read(11);
-  swithces[5].midiChannel = EEPROM.read(17);
-
+  loadSetup();
+  
   pinMode(T_SW, INPUT_PULLUP);
   pinMode(LED_BUILTIN,OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
@@ -232,13 +210,6 @@ void sendSetup()
       //strncpy(transferBuffer[i + 12], (char)swithces[i].midiChannel, 1);
   }
   Serial.write(transferBuffer,sizeof(transferBuffer));
-//    Serial.print("Midi Setup:\r\n");
-//    for (int i =0; i < 18; i++)
-//    {
-//      int temp = transferBuffer[i];
-//      Serial.print(temp,DEC);
-//      Serial.write(" ");
-//    }
 }
 bool getSetup()
 {
@@ -247,17 +218,32 @@ bool getSetup()
   {
     EEPROM.write(i, transferBuffer[i]);
   }
-//  for (int i =0; i < NUM_SWITHCES; i++)
-//  {
-//      swithces[i].ccNumber = transferBuffer[i];
-//  }
-//  for (int i =0; i < NUM_SWITHCES; i++)
-//  {
-//      swithces[i].ccValue = transferBuffer[i+6];
-//  }
-//  for (int i =0; i < NUM_SWITHCES; i++)
-//  {
-//      swithces[i].midiChannel = transferBuffer[i+12];
-//  }
+  loadSetup();
   return false;
+}
+void loadSetup()
+{
+  swithces[0].ccNumber = EEPROM.read(0);
+  swithces[0].ccValue = EEPROM.read(6);
+  swithces[0].midiChannel = EEPROM.read(12);
+  
+  swithces[1].ccNumber = EEPROM.read(1);
+  swithces[1].ccValue = EEPROM.read(7);
+  swithces[1].midiChannel = EEPROM.read(13);
+  
+  swithces[2].ccNumber = EEPROM.read(2);
+  swithces[2].ccValue = EEPROM.read(8);
+  swithces[2].midiChannel = EEPROM.read(14);
+  
+  swithces[3].ccNumber = EEPROM.read(3);
+  swithces[3].ccValue = EEPROM.read(9);
+  swithces[3].midiChannel = EEPROM.read(15);
+
+  swithces[4].ccNumber = EEPROM.read(4);
+  swithces[4].ccValue = EEPROM.read(10);
+  swithces[4].midiChannel = EEPROM.read(16);
+
+  swithces[5].ccNumber = EEPROM.read(5);
+  swithces[5].ccValue = EEPROM.read(11);
+  swithces[5].midiChannel = EEPROM.read(17);
 }
