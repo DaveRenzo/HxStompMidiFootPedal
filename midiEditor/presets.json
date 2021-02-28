@@ -76,11 +76,11 @@
       "SW4_MIDI_CHANNEL": 1,
 
       "SW5_CC_NUM": 69,
-      "SW5_CC_VAL": 1,
+      "SW5_CC_VAL": 9,
       "SW5_MIDI_CHANNEL": 1,
 
       "SW6_CC_NUM": 68,
-      "SW6_CC_VAL": 9,
+      "SW6_CC_VAL": 1,
       "SW6_MIDI_CHANNEL": 1
     }        
   ]
