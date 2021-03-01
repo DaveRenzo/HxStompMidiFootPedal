@@ -1,7 +1,7 @@
 # HxStompMidiFootPedal
 
 ## Introduction
-The [Line 6 HX Stomp](https://line6.com/hx-stomp/) is a compact yet powerful amp and effects modeler.  In addition to it's modeling features it is also a powerful and felxible midi dveice.  The HX Stomp has the ability to offer expanded parameter control using midi.  There are a number of popular commercial midi foot controllers on the market that are frequently used along side the HX Stomp.  This project's aim is to offer a low cost open source alternative to such devices using easily obtainable parts.
+The [Line 6 HX Stomp](https://line6.com/hx-stomp/) is a compact yet powerful amp and effects modeler.  In addition to it's modeling features it is also a powerful and felxible midi dveice.  The HX Stomp has the ability to offer expanded parameter control using midi input.  There are a number of popular commercial midi foot controllers on the market that are frequently used along side the HX Stomp.  This project's aim is to offer a low cost open source alternative to such devices using easily obtainable parts.
 
 ## Parts List
 1. Project Enclosure:  The prototype uses a standard large sized project enclosure purchased from [Radio
