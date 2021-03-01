@@ -1,87 +1,67 @@
 {
-  "presets": [
-    {
-      "preset name": "Looper Controls",
-
-      "SW1_CC_NUM": 60,
-      "SW1_CC_VAL": 74,
-      "SW1_MIDI_CHANNEL": 1,
-
-      "SW2_CC_NUM": 61,
-      "SW2_CC_VAL": 85,
-      "SW2_MIDI_CHANNEL": 1,
-
-      "SW3_CC_NUM": 62,
-      "SW3_CC_VAL": 83,
-      "SW3_MIDI_CHANNEL": 1,
-
-      "SW4_CC_NUM": 60,
-      "SW4_CC_VAL": 3,
-      "SW4_MIDI_CHANNEL": 1,
-
-      "SW5_CC_NUM": 61,
-      "SW5_CC_VAL": 5,
-      "SW5_MIDI_CHANNEL": 1,
-
-      "SW6_CC_NUM": 63,
-      "SW6_CC_VAL": 73,
-      "SW6_MIDI_CHANNEL": 1
-    },
-
-    {
-      "preset name": "Foot Switch Controls",
-
-      "SW1_CC_NUM": 49,
-      "SW1_CC_VAL": 1,
-      "SW1_MIDI_CHANNEL": 1,
-
-      "SW2_CC_NUM": 50,
-      "SW2_CC_VAL": 1,
-      "SW2_MIDI_CHANNEL": 1,
-
-      "SW3_CC_NUM": 51,
-      "SW3_CC_VAL": 1,
-      "SW3_MIDI_CHANNEL": 1,
-
-      "SW4_CC_NUM": 52,
-      "SW4_CC_VAL": 1,
-      "SW4_MIDI_CHANNEL": 1,
-
-      "SW5_CC_NUM": 53,
-      "SW5_CC_VAL": 1,
-      "SW5_MIDI_CHANNEL": 1,
-
-      "SW6_CC_NUM": 68,
-      "SW6_CC_VAL": 1,
-      "SW6_MIDI_CHANNEL": 1
-    },
-
-    {
-      "preset name": "Snap Shot Select",
-
-      "SW1_CC_NUM": 69,
-      "SW1_CC_VAL": 0,
-      "SW1_MIDI_CHANNEL": 1,
-
-      "SW2_CC_NUM": 69,
-      "SW2_CC_VAL": 1,
-      "SW2_MIDI_CHANNEL": 1,
-
-      "SW3_CC_NUM": 69,
-      "SW3_CC_VAL": 2,
-      "SW3_MIDI_CHANNEL": 1,
-
-      "SW4_CC_NUM": 69,
-      "SW4_CC_VAL": 8,
-      "SW4_MIDI_CHANNEL": 1,
-
-      "SW5_CC_NUM": 69,
-      "SW5_CC_VAL": 9,
-      "SW5_MIDI_CHANNEL": 1,
-
-      "SW6_CC_NUM": 68,
-      "SW6_CC_VAL": 1,
-      "SW6_MIDI_CHANNEL": 1
-    }        
-  ]
+    "presets": [
+        {
+            "preset name": "Looper Controls",
+            "SW1_CC_NUM": 60,
+            "SW1_CC_VAL": 74,
+            "SW1_MIDI_CHANNEL": 1,
+            "SW2_CC_NUM": 61,
+            "SW2_CC_VAL": 85,
+            "SW2_MIDI_CHANNEL": 1,
+            "SW3_CC_NUM": 62,
+            "SW3_CC_VAL": 83,
+            "SW3_MIDI_CHANNEL": 1,
+            "SW4_CC_NUM": 60,
+            "SW4_CC_VAL": 3,
+            "SW4_MIDI_CHANNEL": 1,
+            "SW5_CC_NUM": 61,
+            "SW5_CC_VAL": 5,
+            "SW5_MIDI_CHANNEL": 1,
+            "SW6_CC_NUM": 63,
+            "SW6_CC_VAL": 73,
+            "SW6_MIDI_CHANNEL": 1
+        },
+        {
+            "preset name": "Foot Switch Controls",
+            "SW1_CC_NUM": 49,
+            "SW1_CC_VAL": 1,
+            "SW1_MIDI_CHANNEL": 1,
+            "SW2_CC_NUM": 50,
+            "SW2_CC_VAL": 1,
+            "SW2_MIDI_CHANNEL": 1,
+            "SW3_CC_NUM": 51,
+            "SW3_CC_VAL": 1,
+            "SW3_MIDI_CHANNEL": 1,
+            "SW4_CC_NUM": 52,
+            "SW4_CC_VAL": 1,
+            "SW4_MIDI_CHANNEL": 1,
+            "SW5_CC_NUM": 53,
+            "SW5_CC_VAL": 1,
+            "SW5_MIDI_CHANNEL": 1,
+            "SW6_CC_NUM": 68,
+            "SW6_CC_VAL": 1,
+            "SW6_MIDI_CHANNEL": 1
+        },
+        {
+            "preset name": "Snap Shot Select",
+            "SW1_CC_NUM": 69,
+            "SW1_CC_VAL": 0,
+            "SW1_MIDI_CHANNEL": 1,
+            "SW2_CC_NUM": 69,
+            "SW2_CC_VAL": 1,
+            "SW2_MIDI_CHANNEL": 1,
+            "SW3_CC_NUM": 69,
+            "SW3_CC_VAL": 2,
+            "SW3_MIDI_CHANNEL": 1,
+            "SW4_CC_NUM": 69,
+            "SW4_CC_VAL": 8,
+            "SW4_MIDI_CHANNEL": 1,
+            "SW5_CC_NUM": 69,
+            "SW5_CC_VAL": 9,
+            "SW5_MIDI_CHANNEL": 1,
+            "SW6_CC_NUM": 68,
+            "SW6_CC_VAL": 1,
+            "SW6_MIDI_CHANNEL": 1
+        }        
+    ]
 }

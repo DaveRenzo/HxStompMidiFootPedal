@@ -22,15 +22,22 @@ import time
 import json
 
 
-baud = 31250
+#################### Initialize com port object and some globals ##############
 
+#set up serial port object with the correct baud rate for midi and get a list 
+#of serial ports
+baud = 31250
 ports = serial.tools.list_ports.comports()
-dropdownList =[]
-presetList = []
-comPortDictionary={}
 ser = serial.Serial()
 ser.baudrate = baud
 
+#create some empty lists and dicts to use later
+dropdownList =[]
+presetList = []
+comPortDictionary={}
+
+#populate comports dropdown list for later use with gui and load preset data 
+#from json file
 for port in ports:
     #print(port.device + ": "+ port.description)
     dropdownList.append(port.description)
@@ -42,6 +49,10 @@ with open('presets.json') as f:
 for preset in PresetData["presets"]:
     presetList.append(preset["preset name"])
 
+
+
+
+############### Functions #####################################################
 
 def openComPort():
     messagebox.showinfo(message = "Hold down Switch 1 and click OK to put unit into programming mode")
@@ -138,16 +149,9 @@ def sendSetup():
                 print("Fubar")
 
 def loadPreset():
-    ### LOAD The preset data from the json file
-    ### extract names to a list and sort alphabetically
-    with open('presets.json') as f:
-        presets = json.load(f)
-
-    presetNames=[]
-    for preset in presets["presets"]:
-         presetNames.append(preset["preset name"])
-
-    presetNames = sorted(presetNames)
+    global presetList
+    #sort preset names alphabetically
+    presetNames = sorted(presetList)
 
     ### Setup data for use in Listbox
     choiceVar = tk.StringVar(value=presetNames)
@@ -175,10 +179,16 @@ def loadPreset():
     # we need to have a vertical view 
     scrollBar.config(command = presetListBox.yview) 
 
-    loadButton =  tk.Button(loadPresetWindow, text='Load Preset', command = lambda: loadPresetCB(loadPresetWindow,presetListBox.get(presetListBox.curselection())))
+    #lambda funtion is used to pass paramateres to the loadbutton callback
+    loadButton =  tk.Button(loadPresetWindow, text='Load Preset', 
+                            command = lambda: loadPresetCB(loadPresetWindow,
+                            presetListBox.get(presetListBox.curselection())))
+
     loadButton.grid(row =1, column =0, padx = 10, pady = 5)
 
-    cancelButton =  tk.Button(loadPresetWindow, text='Cancel', command = loadPresetWindow.destroy)
+    cancelButton =  tk.Button(loadPresetWindow, text='Cancel', 
+                              command = loadPresetWindow.destroy)
+
     cancelButton.grid(row =1, column =1, padx = 10, pady = 5)
     loadPresetWindow.mainloop()
 
@@ -213,6 +223,82 @@ def loadPresetCB(widowHandle, presetName):
             sw5ChannelChoice.set(str(data["SW5_MIDI_CHANNEL"]))
             sw6ChannelChoice.set(str(data["SW6_MIDI_CHANNEL"]))
     widowHandle.destroy()
+
+def savePreset():
+    ### Setup window with listbox
+    savePresetWindow = tk.Toplevel()
+    savePresetWindow.grab_set()
+
+    entryFrame = tk.Frame(savePresetWindow)
+    entryFrame.grid(column = 0, row =0, padx =10, pady = 5)
+
+    savePresetLabel = tk.Label(entryFrame, text="Preset Name:")
+    savePresetLabel.grid(column =0, row =0)
+
+    savePresetEntry = tk.Entry(entryFrame)
+    savePresetEntry.grid(column =1, row =0)
+
+    buttonFrame = tk.Frame(savePresetWindow)
+    buttonFrame.grid(column = 0, row =1, padx =10, pady = 5, sticky = (tk.E, tk.W))
+    buttonFrame.grid_columnconfigure((0, 1), weight=1)
+
+    saveButton =  tk.Button(buttonFrame, text='Save', 
+                              command = lambda:savePresetCB(savePresetWindow,savePresetEntry.get()))
+
+    saveButton.grid(row =0, column =0, sticky = (tk.E, tk.W))
+
+    cancelButton =  tk.Button(buttonFrame, text='Cancel', 
+                              command = savePresetWindow.destroy)
+
+    cancelButton.grid(row =0, column =1, sticky = (tk.E, tk.W))
+
+    savePresetWindow.mainloop()
+
+def savePresetCB(widowHandle,presetName):
+    for names in presetList:
+        if names == presetName:
+            messagebox.showerror(title=None, message=(presetName +" is already taken, please choose another name"))
+            return
+    print(presetName)
+    with open('presets.json') as json_file: 
+        data = json.load(json_file)
+    
+        temp = data["presets"]
+
+        y =  {  "preset name": presetName,
+
+                "SW1_CC_NUM": int(sw1CcNumChoice.get()),
+                "SW1_CC_VAL": int(sw1CcValChoice.get()),
+                "SW1_MIDI_CHANNEL": int(sw1ChannelChoice.get()),
+
+                "SW2_CC_NUM": int(sw2CcNumChoice.get()),
+                "SW2_CC_VAL":int(sw2CcValChoice.get()),
+                "SW2_MIDI_CHANNEL": int(sw2ChannelChoice.get()),
+
+                "SW3_CC_NUM": int(sw3CcNumChoice.get()),
+                "SW3_CC_VAL": int(sw3CcValChoice.get()),
+                "SW3_MIDI_CHANNEL": int(sw3ChannelChoice.get()),
+
+                "SW4_CC_NUM": int(sw4CcNumChoice.get()),
+                "SW4_CC_VAL": int(sw4CcValChoice.get()),
+                "SW4_MIDI_CHANNEL": int(sw4ChannelChoice.get()),
+
+                "SW5_CC_NUM": int(sw5CcNumChoice.get()),
+                "SW5_CC_VAL": int(sw5CcValChoice.get()),
+                "SW5_MIDI_CHANNEL": int(sw5ChannelChoice.get()),
+
+                "SW6_CC_NUM": int(sw6CcNumChoice.get()),
+                "SW6_CC_VAL": int(sw6CcValChoice.get()),
+                "SW6_MIDI_CHANNEL": int(sw6ChannelChoice.get())
+            }
+    temp.append(y)
+    write_json(data)
+    presetList.append(presetName)
+    widowHandle.destroy()
+
+def write_json(data, filename='presets.json'): 
+    with open(filename,'w') as f: 
+        json.dump(data, f, indent=4) 
 
 
 
@@ -306,7 +392,7 @@ if __name__ == "__main__":
     presetLoadButton = tk.Button(presetFrame, text='Load Preset', command = loadPreset)
     presetLoadButton.grid(column = 0, row =0, padx =2, sticky = (tk.E, tk.W))
 
-    presetSaveButton = tk.Button(presetFrame, text='Save Preset', command = loadPreset)
+    presetSaveButton = tk.Button(presetFrame, text='Save Preset', command = savePreset)
     presetSaveButton.grid(column = 1, row =0, padx =2, sticky = (tk.E, tk.W))
 
     #presetDropdown = tk.OptionMenu(controlFrame, presetChoice, *presetList)
