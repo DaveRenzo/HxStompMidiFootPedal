@@ -16,5 +16,3 @@ The [Line 6 HX Stomp](https://line6.com/hx-stomp/) is a compact yet powerful amp
 
 ## Overview
 The arduino circuit is about as simple as it gets.  One leg of each switch is connected to a digital input of the arduino, the other legs are connected to the arduino ground.  Since there is a limited number of ground connections on the arduino it is neccessary to daisy chain the pins on the swtiches using hookup wire and connceting them to a single ground input on the arduino.  The arduino's digital input pins will be configured to use the [internal pullup resistors.](https://www.arduino.cc/en/Tutorial/Foundations/DigitalPins#properties-of-pins-configured-as-input_pullup).  The initial prototype uses only the midi out of the breakout board.  Note:  if the midi in portion is used the serial connection over USB will not work correctly.
-
-## Code
